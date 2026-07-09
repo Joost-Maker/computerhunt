@@ -6,6 +6,102 @@ Append-only. Newest run at the top. Prices are NL/EU incl. BTW at run time and g
 
 ---
 
+## Run 003 — 2026-07-09
+**Objective this run:** Routine monthly reprice. Catch price moves / new silicon / ROCm changes
+since Run 002; re-apply the GPU value rule; make the buy-now-vs-wait call on the DDR5-6000 CL30
+2×32 kit. Tweakers Pricewatch was unreachable from this environment again (same as Run 002) —
+priced on Megekko.nl (live-fetched, in-stock, incl. BTW) with Geizhals/GPUTracker/eBay cross-checks
+per the fallback rule in requirements.md. No fabricated Pricewatch links.
+
+**GPU judgement table** (NL/EU, live July 2026):
+
+| GPU | VRAM | Gen (yr) | ~Price new / used | Gaming raster | Local-LLM fit | SW | Verdict (per rule) |
+|---|---|---|---|---|---|---|---|
+| **RX 7900 XTX** | **24 GB** | RDNA3 ('22) | ~€899–1199 new (EU, patchy NL retail stock) / **~€675–820 used** (eBay/GPUTracker) | very high, 4K-capable | ~30B Q4 | ROCm mature (gfx1100) | ✅ **PICK** — still best VRAM/€ |
+| RTX 3090 | 24 GB | Ampere ('20) | EOL / ~€900–1000 used (Marktplaats NL) | ~47% < 7900 XTX | ~30B Q4 | CUDA (most mature) | ❌ older, slower, same ballpark price used — CUDA is the only edge |
+| RTX 4090 | 24 GB | Ada ('22) | EOL-scarce, well over €1800 | top-tier | 24 GB, CUDA | CUDA | ❌ still absurd scarcity pricing |
+| RX 9070 XT | 16 GB | RDNA4 ('25) | ~€719–849 (Megekko, in stock) | excellent 1440p/entry-4K | ≤~20B Q4 | ROCm 7.2.1 — gfx1201 memory-coherency bug **now fixed** | ▲ only if local-LLM stays light |
+| RTX 5070 Ti | 16 GB | Blackwell ('25) | ~€1099–1199 (Megekko) — up from ~€700–800 last run | excellent + RT/DLSS4 | ≤~20B, CUDA | CUDA | ▲ 16 GB *and* now pricier — weaker case than last run |
+| RTX 5090 | 32 GB | Blackwell ('25) | ~€2500+ | fastest | ~70B-ish, CUDA | CUDA | ❌ over the €2k VRAM cap |
+| Radeon AI PRO R9700 | 32 GB | RDNA4 ('26) | **~€1420–1500 new (EU, Geizhals)** — firm price now, was "premium/€1300+" est. last run | fine (not the point) | 32 GB, ROCm | ROCm | △ high-VRAM escape hatch; ~€600–800 premium over the 7900 XTX for 8 GB more — still niche |
+
+**Verdict:** **RX 7900 XTX 24 GB, unchanged.** ROCm 7.2.1 fixed the gfx1201 (RDNA4) memory-coherency
+bug, so the 9070 XT's software story keeps improving — but it's still 16 GB, and that's the whole
+rule. RTX 5070 Ti got *more* expensive since Run 002 (16 GB for ~€1,150 now), weakening its case
+further. RTX 3090 used has drifted down to roughly parity with 7900 XTX used, but it's older,
+slower, and CUDA is its only edge — not enough to flip. R9700 32 GB now has solid EU pricing
+(~€1,450) instead of an estimate; it's a real, sanely-priced 32 GB option if local models ever
+outgrow 24 GB, but paying ~€700 more for 8 GB extra VRAM isn't justified today. Buy used
+(~€675–820) for value or new (~€899–1199, shop around EU-wide — NL retail stock is patchy right
+now) for warranty.
+
+**Full build (this run, Megekko.nl live prices incl. BTW):**
+
+| Component | Pick | Price (EUR) | Link |
+|---|---|---|---|
+| CPU | Ryzen 9 9950X3D (16c/32t) | **€609** | megekko.nl/product/8200/183019 (AMD-Ryzen-9-9950X3D-Processor) |
+| GPU | RX 7900 XTX 24GB | ~€675–820 used / ~€899–1199 new | gputracker.eu (RX 7900 XTX search); geizhals.eu cross-check — NL retail (Megekko/Azerty) largely out of stock, buy EU-wide |
+| Mobo | ASRock B850 Pro-A, ATX, 4-DIMM, 2.5GbE | **€190.95** | megekko.nl/product/8197/262433 (ASRock-B850-Pro-A-moederbord) |
+| RAM | Kingston FURY Beast 2×32GB DDR5-6000 CL30 EXPO | **€959** (Corsair CMH64GX5M2B6000Z30 equivalent: €1,079) | megekko.nl/product/7962/962099 (Kingston-...-KF560C30BBEK2-64) |
+| Storage | Samsung 990 PRO 1TB + 2TB (heatsink) NVMe Gen4 | €229.90 + €419 = **€649** | megekko.nl/product/5093/293095 ; megekko.nl/product/5093/941458 |
+| PSU | Cooler Master MWE Gold 850 V3, ATX3.1 Gold | **€85** | megekko.nl/product/4186/968907 (Cooler-Master-MWE-Gold-850-V3) |
+| Cooler | Peerless Assassin 120 SE ARGB | **€40.95** | megekko.nl/product/1994/1083171 |
+| Case | Fractal North, Charcoal Black TG Dark | **€119.90** | megekko.nl/product/2013/952740 |
+| **Total** | (used GPU) | **~€3,254–3,399** | |
+| **Total** | (new GPU) | **~€3,478–3,778** | |
+
+**Idle estimate (always-on state):** ~55–75 W (unchanged from prior directional estimate — no
+new idle-power data surfaced this run; still on the Run 002/001 TODO to pull GamersNexus/Phoronix
+numbers for the exact B850 + 9950X3D + 7900 XTX combo).
+
+**Changed vs Run 002:**
+- **RAM (the volatile line, as flagged):** 2×32 DDR5-6000 CL30 confirmed at **€959–1,079** live on
+  Megekko — up **~4×** from the ~€200–270 Run 002 estimate. This is not a shop-specific spike:
+  industry reporting (TrendForce, Tom's Hardware, Wccftech) confirms a structural DDR5 shortage
+  driven by AI/HBM fab reallocation (Samsung/SK Hynix cutting standard-DRAM output for HBM), with
+  consumer DDR5 module prices up ~3.5–4× since early 2025 and **no relief expected before 2027** —
+  some analysts expect prices to keep climbing (potentially doubling again) through end of 2026.
+  **This inverts the usual "wait it out" instinct: waiting is more likely to cost more, not less.**
+  See "buy-now-vs-wait" verdict below.
+- **Storage, newly volatile too:** same root cause (NAND flash, not DRAM, but the same AI-driven
+  fab-capacity squeeze) hit SSDs. 1TB+2TB Gen4 NVMe now **€649**, vs ~€180 assumed in Run 001/002 —
+  a ~3.6× jump. This wasn't flagged as a watch item before; it is now.
+- **CPU down slightly:** 9950X3D at €609 (Megekko), down from ~€649–700 in Run 002 — the only line
+  moving the right direction.
+- **GPU pick unchanged** (RX 7900 XTX 24GB) — price roughly flat to a touch higher; NL retail stock
+  for new units got patchier (Megekko/Azerty both showing "not available from any supplier" on
+  several SKUs) but the card is readily available EU-wide (GPUTracker, Mindfactory) and on the used
+  market, so no availability-driven downgrade needed.
+- **ROCm:** 7.2.1 fixed the gfx1201 (RDNA4) memory-coherency bug — worth noting for the 9070 XT
+  path, doesn't change the pick.
+- **R9700 32GB:** went from a rough "€1,300+" estimate to a firm ~€1,420–1,500 EU street price —
+  confirmed still a deliberate-upgrade-only option, not the default.
+- **Build total roughly 60–75% higher than Run 002's ~€1,830–2,350** — driven almost entirely by
+  RAM + storage (structural component shortages), not by any compute-pick change. CPU/GPU/mobo/
+  case/PSU/cooler collectively are flat-to-cheaper than Run 002.
+
+**Buy-now-vs-wait verdict (RAM, the line Joost asked about specifically):** **Buy now if the 64GB
+target is genuinely needed soon.** This isn't a transient flash-sale spike where patience is
+rewarded — it's a structural AI-driven DRAM/NAND shortage that every tracked forecast (TrendForce,
+IDC, Tom's Hardware) expects to *worsen or plateau-at-elevated-levels* through the rest of 2026,
+with normalization not expected before 2027. Waiting 3–6 months is more likely to cost *more* than
+today's €959–1,079, not less. If the €700+ premium over Run 002's estimate is a hard budget
+blocker, the fallback is to **provisionally buy a 2×16GB (32GB) kit now** (roughly a third of the
+64GB kit's price) and treat the jump to 64GB as a deferred upgrade once DRAM pricing normalizes —
+but that means temporarily missing the 64GB hard constraint, so flagging it as a tradeoff rather
+than deciding it unilaterally. Storage: same logic, lower stakes — 1TB alone (€230) covers the host
+boot drive; the 2TB VM/bulk drive can be deferred without touching a hard constraint.
+
+**Open / waiting on:** Idle-power numbers for the exact B850+9950X3D+7900 XTX combo (still not
+pulled from GamersNexus/Phoronix — carry to next rerun). Decide used-vs-new 7900 XTX (warranty vs
+~€300–400 saving, now a bit wider than Run 002's ~€275). Decide RAM capacity now (64GB @ ~€1,000)
+vs staged (32GB now, 64GB later) given the shortage outlook above — Joost's call, not resolved by
+this run.
+
+**Snapshot:** builds/2026-07-09-run-003.md
+
+---
+
 ## Run 002 — 2026-07-09
 **Objective this run:** GPU choice reopened to NVIDIA (single-dGPU bare-metal host); apply the
 explicit value rule (last-gen+high-VRAM > new-gen+low-VRAM; equal VRAM → newer; no ~€2k VRAM card).
