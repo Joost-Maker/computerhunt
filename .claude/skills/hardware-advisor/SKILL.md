@@ -60,6 +60,8 @@ Follow `references/sources.md`. At minimum, this run must actually fetch:
 - **Tweakers Pricewatch** for each shortlisted component (live EUR price + availability).
 - The **ROCm compatibility matrix / release notes** if a GPU is in play (RDNA4 support and any
   gfx1201-class gotchas move release to release).
+- The **memory-market macro** (per `sources.md` § Memory-market macro): DDR5/NAND price trend and
+  the AI/HBM demand picture. This is the current buy-signal — do it every run, GPU or not.
 Cross-check anything surprising against a second source (GamersNexus / Hardware Unboxed for
 perf, Phoronix for Linux behaviour). Don't quote sources at length — synthesise.
 
@@ -98,9 +100,11 @@ returned page URL for the email. Exact property names + types are in `references
 
 ### 5d. Notify — phone push (primary), Gmail draft (optional)
 Send a **phone push** with `PushNotification` (status `proactive`): a one-line message (< 200 chars,
-no markdown) = GPU pick + total + one-line "what changed", plus the Notion page URL if it fits. This
-is the real notification and needs no connector, so it works in unattended/scheduled runs. A "not
-sent" result just means Joost is at the terminal (redundant) — that's fine, not a failure.
+no markdown) = the **memory buy signal (BUY/WAIT + trend)** first, then GPU pick + total, plus the
+Notion page URL if it fits. The buy signal is what Joost is watching for, so lead with it (e.g.
+`WAIT — DDR5 still ↑. Pick R9700 32GB, box ~€X. <notion>`). This is the real notification and needs
+no connector, so it works in unattended/scheduled runs. A "not sent" result just means Joost is at
+the terminal (redundant) — that's fine, not a failure.
 
 Optionally, on an interactive run with the Gmail connector attached, also drop a ready-to-send draft
 to **joost@barnebies.com** (terse body + Notion link) he can tap Send on — the connector is
@@ -108,8 +112,9 @@ draft-only (no auto-send). Skip silently if Gmail isn't attached. Exact wording 
 `references/connectors.md`. (SMTP-based email can't work here — the web sandbox firewalls SMTP.)
 
 ### 6. Report
-Lead with the **judgement tables** (GPU table + full-build table with a total) — that's the
-deliverable Joost wants. Attach **real price links, Tweakers Pricewatch preferred** (deep-links on a
+Lead with the **memory buy signal** (BUY/WAIT + DDR5/NAND trend ↑→↓ + the one thing that moved) —
+that's the line gating the purchase right now. Then the **judgement tables** (GPU table + full-build
+table with a total). Attach **real price links, Tweakers Pricewatch preferred** (deep-links on a
 Claude Code rerun; real fetched alternatives otherwise — never a fabricated Pricewatch URL). Then
 the headline pick, the GPU verdict per the value rule, and a one-line "what changed since last time".
 

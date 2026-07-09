@@ -108,7 +108,9 @@ Deliver **clear judgement tables of price + performance**, not prose walls. At m
 | **Total** | | **...** | |
 
 **Idle estimate (always-on state):** ~XX W
+**Memory-market watch:** <DDR5/NAND trend ↑/→/↓ this month, the one thing that moved (HBM/AI demand,
+maker capacity), and **BUY/WAIT** + one-line why — the current buy signal>
 **Changed vs previous run:** <price moves, silicon changes, picks that flipped + why>
-**Open / waiting on:** <e.g. hold RAM until DDR5-6000 32GB kit < €X>
+**Open / waiting on:** <lead with the memory buy signal; e.g. WAIT — DDR5 still climbing>
 **Snapshot:** builds/YYYY-MM-DD-run-NNN.md
 ```
