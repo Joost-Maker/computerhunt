@@ -82,9 +82,13 @@ Deliver **clear judgement tables of price + performance**, not prose walls. At m
   Local-LLM fit | Software (CUDA/ROCm) | Rule verdict. Show the rejected options too so the
   reasoning is visible, not just the pick.
 - A **full-build table** with per-line price and a total, plus any GPU scenario split.
-- **Real price links, Tweakers Pricewatch preferred.** On a Claude Code rerun (full web access),
-  attach exact `tweakers.net/pricewatch/...` deep-links per component. If Pricewatch can't be
-  reached in a given environment, use real fetched alternatives (gputracker.eu, pangoly NL,
+- **Price only the parts that move:** CPU, GPU, Motherboard, RAM, Storage. **Do NOT reprice
+  PSU, cooler, or case** — they're commodity accessories, always in stock, and not interesting.
+  Carry them as a single flat **"Accessories (PSU + cooler + case): ~€350 fixed"** line in the total
+  and never fetch prices for them. (Defaults stay: 850W ATX3.1 Gold, big air, Fractal North.)
+- **Real price links, Tweakers Pricewatch preferred**, for the priced parts. On a Claude Code rerun
+  (full web access), attach exact `tweakers.net/pricewatch/...` deep-links per component. If
+  Pricewatch can't be reached, use real fetched alternatives (gputracker.eu, pangoly NL,
   bestvaluegpu EU) and say so — **never fabricate a Pricewatch URL.**
 
 ## Log entry format (append to BUILD-LOG.md)
@@ -100,9 +104,7 @@ Deliver **clear judgement tables of price + performance**, not prose walls. At m
 | Mobo | ... | ... | ... |
 | RAM | ... | ... | ... |
 | Storage | ... | ... | ... |
-| PSU | ... | ... | ... |
-| Cooler | ... | ... | ... |
-| Case | ... | ... | ... |
+| Accessories (PSU+cooler+case) | fixed defaults | ~350 flat | not repriced — always in stock |
 | **Total** | | **...** | |
 
 **Idle estimate (always-on state):** ~XX W

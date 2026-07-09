@@ -64,13 +64,17 @@ Cross-check anything surprising against a second source (GamersNexus / Hardware 
 perf, Phoronix for Linux behaviour). Don't quote sources at length — synthesise.
 
 ### 4. Build the recommendation
-Produce a full parts table honouring `requirements.md`. Where there's a real fork, present the
-**primary pick + the alternative and the tradeoff** rather than hiding the choice. Always show:
+Produce a parts table honouring `requirements.md`. Where there's a real fork, present the
+**primary pick + the alternative and the tradeoff** rather than hiding the choice. **Price only the
+parts that move** — CPU, GPU, Motherboard, RAM, Storage:
 - CPU (and whether the do-everything 16-core or the leaner 8-core is the better fit today)
 - GPU (balanced-for-always-on vs local-AI-max vs high-VRAM options — see requirements)
 - Motherboard (4-DIMM, ≥2.5GbE; no IOMMU requirement — no passthrough in this design)
 - RAM (2×32 DDR5-6000 CL30 EXPO now; note the 4-DIMM speed penalty on future expansion)
-- Storage, PSU (efficiency at low load), cooling (air, 24/7 quiet), case
+- Storage
+- **Do NOT research or reprice PSU, cooler, or case** — commodity accessories, always in stock.
+  Carry them as one flat "Accessories: ~€350" line (defaults: 850W ATX3.1 Gold, big air, Fractal
+  North). Don't spend tokens fetching their prices.
 - **Idle-power estimate** for the always-on role, and total EUR (per configuration).
 
 ### 5. Diff + log

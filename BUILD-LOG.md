@@ -6,6 +6,25 @@ Append-only. Newest run at the top. Prices are NL/EU incl. BTW at run time and g
 
 ---
 
+## Decision — 2026-07-09 — HOLD the purchase + scope trim
+Joost's calls this session:
+- **HOLD the build.** DDR5/NAND shortage has 64 GB DDR5 ≈ **€1,000** and NVMe ≈ **€300/TB** — memory +
+  storage alone ~€1,900, more than the GPU. A full-spec box is ~€4,100–4,700 right now, so a ~€2,500
+  target is off the table. Per the "if RAM is spiking, wait" rule: **wait, watch prices, revisit on a
+  future run.** When buying, expand memory in halves (32 GB + 1 TB now, add the rest as prices ease).
+- **Preferred GPU when buying = Radeon AI PRO R9700 32 GB** (RDNA4, seen in stock @ **€1,579**,
+  Galaxus NL). Rationale: company budget (laptop replacement, so ~€3k+ is justified vs a mobile
+  workstation); 32 GB future-proofs local inference (70B-class) and, in a RAM shortage, VRAM
+  substitutes for pricey system RAM. Gaming = RX 9070 XT class (same Navi 48 die) — clears QHD ~100
+  easily, better RT than 7900 XTX; caveats: workstation blower (louder) + full RDNA4 Linux support
+  native in Ubuntu 26.04 (24.04 needs a recent HWE kernel/Mesa). 7900 XTX 24 GB stays the on-budget
+  fallback if the ceiling is hard.
+- **Scope trim (token saving):** stop repricing **PSU, cooler, case** — commodity accessories,
+  always in stock. Future runs carry them as one flat ~€350 line and price only CPU/GPU/Mobo/RAM/
+  Storage. (requirements.md + SKILL.md updated.)
+
+---
+
 ## Run 003 — 2026-07-09
 **Objective this run:** Routine monthly reprice. Catch price moves / new silicon / ROCm changes
 since Run 002; re-apply the GPU value rule; make the buy-now-vs-wait call on the DDR5-6000 CL30
