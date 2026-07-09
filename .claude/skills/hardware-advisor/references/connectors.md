@@ -28,17 +28,33 @@ Properties (match names exactly):
 Page **content** (Notion-flavored markdown) = the full run: the GPU judgement table, the full-build
 table with totals, "Changed vs previous run", and "Open / waiting on". This is the same material as
 the `builds/` snapshot — Notion is the shareable mirror, git is still the source of truth. Set the
-page icon to 🖥️. Keep the returned page URL — the email links to it.
+page icon to 🖥️. Keep the returned page URL — the notification links to it.
 
-## Gmail — terse notification (DRAFT only)
+## Notification — phone push (primary)
 
-**Important limitation:** this Gmail connector exposes `create_draft` only — there is **no send
-tool**. So the skill prepares a ready-to-go draft to Joost; he opens Gmail → Drafts and taps Send.
-It cannot fire mail unattended. (True auto-send would need a Gmail connector with send scope.)
+Notify Joost with a **phone push** via the `PushNotification` tool (status `proactive`). This is the
+chosen mechanism: zero setup, no credentials, and it works **unattended in routines** (unlike the
+connectors, which may be absent when a scheduled run fires). Push it right after the Notion page is
+created so the message can reference it.
 
-Call `create_draft`:
-- **to:** `joost@barnebies.com`
-- **subject:** `Hardware Advisor — Run NNN (YYYY-MM-DD): <GPU pick short>`
-- **body (terse):** pick + total + one-line change, then the Notion page URL, then the DB URL.
+- **message (< 200 chars, one line, no markdown):** GPU pick + total + a one-line "what changed".
+  Include the Notion page URL if it fits.
+- Example: `HW Advisor Run 003: pick RX 7900 XTX 24GB, ~€1,830–2,350. Held on value rule. See Notion.`
 
-Keep the email short by design — the full tables live in Notion, not the email.
+Note: `PushNotification` reaches the phone only when Remote Control is connected, and is skipped as
+redundant when Joost is actively at the terminal (a "not sent" result there is expected, not a
+failure). For scheduled/unattended runs he's away, so it delivers.
+
+## Why not SMTP / auto-send email
+
+Claude Code on the web only allows outbound **HTTPS through the agent proxy** — raw SMTP ports
+(465/587) are firewalled, so App-Password / SMTP "gmail-send" skills do **not** work here. True
+auto-send email would need an HTTPS path with a stored secret (Resend API, or the Gmail API via a
+stored OAuth refresh token). Push was chosen instead. If email is ever wanted, wire one of those.
+
+## Gmail — optional draft (interactive runs only)
+
+The managed Gmail connector is **draft-only** (`create_draft`, no send). Optional nicety on an
+interactive Claude Code run: also drop a ready-to-send draft to `joost@barnebies.com` (subject
+`Hardware Advisor — Run NNN (YYYY-MM-DD): <pick>`, terse body + Notion link) that he can tap Send on.
+Skip silently if the connector isn't attached — the phone push is the real notification.

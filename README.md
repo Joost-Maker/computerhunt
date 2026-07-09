@@ -23,11 +23,13 @@ Each run: fetches the live Tweakers Best Buy Guide + Pricewatch (and ROCm notes)
 judgement tables, then appends to `BUILD-LOG.md`, writes a `builds/` snapshot, and commits. **Git
 history is the audit trail** of every choice and why.
 
-**Notion + email (optional, connector-driven).** When run in Claude Code with the Notion and Gmail
-connectors attached, each run also publishes the full result as one page in a **Hardware Advisor —
-Build Runs** Notion database and drafts a terse summary email (linking that page) to the owner. The
-Gmail connector is **draft-only** — the mail is prepared in Drafts to send with one tap; it is not
-sent unattended. Missing connectors are skipped, never fatal. See
+**Notion + phone push.** When run in Claude Code, each run also publishes the full result as one page
+in a **Hardware Advisor — Build Runs** Notion database (when the Notion connector is attached) and
+fires a **terse phone push** with the pick, total, and Notion link. The push is the primary
+notification and needs no connector, so it works in unattended/scheduled runs. Optionally, on an
+interactive run, a ready-to-send Gmail **draft** is also prepared (the connector is draft-only — no
+auto-send). SMTP-based auto-send email doesn't work in the web sandbox (SMTP ports are firewalled;
+only HTTPS is allowed). Missing connectors are skipped, never fatal. See
 `.claude/skills/hardware-advisor/references/connectors.md`.
 
 ## Layout

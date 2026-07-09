@@ -31,10 +31,12 @@ GIT:        if STATE_DIR is a git repo, commit the new log entry + snapshot afte
             (message: "run NNN: <one-line objective>"); push if an 'origin' remote is set.
 NOTION:     after the commit, publish the full run as one page in the "Hardware Advisor — Build Runs"
             database (data_source_id 65de7c0c-e1e0-4383-9c0d-194b6f131195). See references/connectors.md.
-EMAIL:      then draft a terse summary email to joost@barnebies.com linking the Notion page.
-            NOTE: the Gmail connector is DRAFT-ONLY (no send) — it lands in Drafts, Joost taps Send.
-CONNECTORS: the Notion/Gmail steps run only when those connectors are attached (Claude Code web/
-            desktop/GitHub). If one is absent, skip it and say so — never fail the run over it.
+NOTIFY:     then send a terse phone push (PushNotification, proactive) with the pick + total + Notion
+            link. This is the primary notification — works unattended in routines. See connectors.md.
+            (SMTP auto-send is impossible here: the web sandbox firewalls SMTP; only HTTPS is open.)
+CONNECTORS: the Notion step + the optional Gmail draft run only when those connectors are attached
+            (Claude Code web/desktop/GitHub). If one is absent, skip it and say so — never fail the
+            run over it. The phone push does not need a connector.
 ```
 
 ## When you run this skill
@@ -90,11 +92,16 @@ GPU judgement table, the full-build table with totals, "Changed vs previous run"
 on". This is the shareable mirror of the `builds/` snapshot; git stays the source of truth. Keep the
 returned page URL for the email. Exact property names + types are in `references/connectors.md`.
 
-### 5d. Draft the notification email (when the Gmail connector is attached)
-Call `create_draft` to **joost@barnebies.com** with a **terse** body: the GPU pick, the total, a
-one-line "what changed", then the Notion page URL (and the DB URL). The full tables live in Notion —
-keep the email short. **The Gmail connector is draft-only (no send):** the message lands in Joost's
-Drafts and he taps Send. If Gmail isn't attached, note it in the report instead of failing.
+### 5d. Notify — phone push (primary), Gmail draft (optional)
+Send a **phone push** with `PushNotification` (status `proactive`): a one-line message (< 200 chars,
+no markdown) = GPU pick + total + one-line "what changed", plus the Notion page URL if it fits. This
+is the real notification and needs no connector, so it works in unattended/scheduled runs. A "not
+sent" result just means Joost is at the terminal (redundant) — that's fine, not a failure.
+
+Optionally, on an interactive run with the Gmail connector attached, also drop a ready-to-send draft
+to **joost@barnebies.com** (terse body + Notion link) he can tap Send on — the connector is
+draft-only (no auto-send). Skip silently if Gmail isn't attached. Exact wording is in
+`references/connectors.md`. (SMTP-based email can't work here — the web sandbox firewalls SMTP.)
 
 ### 6. Report
 Lead with the **judgement tables** (GPU table + full-build table with a total) — that's the
