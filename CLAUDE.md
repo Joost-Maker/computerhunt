@@ -15,9 +15,17 @@ the **judgement tables** (GPU table + full-build table with a total) with **real
 (Tweakers Pricewatch preferred)**, then append the decision + rationale to `BUILD-LOG.md`, write a
 snapshot to `builds/`, and **commit** (`run NNN: <objective>`; push if `origin` is set).
 
+Then, **when the Notion + Gmail connectors are attached** (Claude Code web/desktop/GitHub): publish
+the full run as one page in the **Hardware Advisor — Build Runs** Notion database, and draft a terse
+summary email to joost@barnebies.com linking that page. The Gmail connector is **draft-only** (no
+send) — the mail lands in Drafts and Joost taps Send. If a connector is missing, skip that step and
+say so; never fail the run over it. IDs + exact fields are in
+`.claude/skills/hardware-advisor/references/connectors.md`.
+
 ## Where state lives (persistent, git-versioned)
 - `BUILD-LOG.md` — append-only decision log (newest at top). The audit trail.
 - `builds/YYYY-MM-DD-run-NNN.md` — full snapshot per run.
+- Notion **Hardware Advisor — Build Runs** — shareable mirror, one page per run (git stays the truth).
 Git history IS the persistence layer — every rerun is a commit.
 
 ## Fixed facts (don't re-litigate)
