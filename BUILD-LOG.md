@@ -6,6 +6,41 @@ Append-only. Newest run at the top. Prices are NL/EU incl. BTW at run time and g
 
 ---
 
+## Decision — 2026-07-09 — BUY: used pre-built (supersedes HOLD)
+Reversed the hold. **Buying a used, near-new ("overcompleet") pre-built** off the NL used market
+(Coevorden) instead of a fresh DIY box or the Framework Strix Halo.
+
+**The machine:**
+- **CPU:** Ryzen 9 9950X3D (16c/32t) — **new, with invoice** (matches the fixed spec exactly).
+- **GPU:** RX 9070 XT 16 GB Steel Legend (RDNA4) — **new, with invoice**. *Interim* card.
+- **RAM:** 64 GB DDR5-6000 (2×32 Kingston Fury Renegade) — the shortage part, **bought at used price**.
+- **Board:** ASUS ROG Strix X670E-A Gaming WiFi (4-DIMM, 2.5GbE). **PSU:** Cooler Master 1250W (+12VHPWR).
+- **Cooling:** Thermalright 360 AIO (accepted deviation from the air-cooling preference).
+- **Case:** Fractal Design North (white) — the preferred case.
+- **Storage:** 512 GB M.2 (OS) + a **spare 1 TB NVMe** Joost already owns (VM/inference store). No add-on buy.
+- **Price:** asking **€2,650**; countering **€2,500** cash + prompt pickup. Effective all-in ~€2,500–2,650.
+
+**Rationale:**
+- **Sidesteps the DDR5/NAND shortage** that forced the hold — 64 GB DDR5 (~€1,000 new today) comes
+  baked into a used-price whole system. Rebuilding this new today ≈ €3,300; €2,650 ≈ 20% off near-new.
+- **Local AI reclassified: "fun but experimental," not the driver.** So VRAM capacity is no longer
+  worth paying up for. **16 GB is acceptable now** (≤~30B / 30B-MoE on RDNA4 ROCm). When GPU prices
+  cool, **swap to a 24–32 GB card — sell the 9070 XT, write the upgrade off on the business.** The
+  1250W + 12VHPWR PSU is sized for any future GPU.
+- Gets the **exact spec CPU + preferred case + warranty** on the two new parts, for less than a new
+  Framework 64 GB (~€2,849) and far less than the DIY R9700 build (~€4,100 in the shortage).
+
+**Supersedes:** the R9700 32 GB lean and the Framework Strix Halo consideration (both were
+inference-first plays; inference is now explicitly secondary). The 7900 XTX "current pick" is retired
+in favour of the 9070 XT as the interim card.
+
+**Open / next:** at pickup — verify invoices (warranty transfer), test before paying, confirm EXPO
+6000. Going forward the watch flips from "whole-build memory buy signal" to a **GPU-swap buy signal**:
+when a 24–32 GB card reaches sane value, that's the upgrade trigger. Retarget the monthly routine to
+track that once the purchase closes.
+
+---
+
 ## Decision — 2026-07-09 — HOLD the purchase + scope trim
 Joost's calls this session:
 - **HOLD the build.** DDR5/NAND shortage has 64 GB DDR5 ≈ **€1,000** and NVMe ≈ **€300/TB** — memory +
